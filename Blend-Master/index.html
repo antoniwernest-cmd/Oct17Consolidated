@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+ <meta name="theme-color" content="#315d68">
+ <title>Blend Master</title>
+ <link rel="stylesheet" href="styles.css">
+ <script defer src="objects.js"></script><script defer src="data.js"></script><script defer src="date.js"></script><script defer src="core.js"></script><script defer src="excel.js"></script><script defer src="app.js"></script>
+</head>
+<body>
+ <div id="storage-notice" class="notice" hidden role="status"></div>
+ <main id="landing" class="landing">
+  <section class="welcome">
+   <div class="brand"><img src="assets/magic-cat.png" alt=""><span>MYSTIC &amp; MAGIC CAT</span></div>
+   <div class="eyebrow">A little reading magic, every day.</div>
+   <h1>Blend<br><span>Master</span><span class="sparkle" aria-hidden="true">✦</span></h1>
+   <p class="intro">Listen to the sentence.<br>Find the blend or the word.</p>
+   <div class="feature-list"><span><b>01</b> It reads to me.</span><span><b>02</b> I drag or tap my answers.</span><span><b>03</b> Six levels to grow with me.</span></div>
+   <div class="level-preview"><span>A · B · C <small>1 blank · 3 choices</small></span><span>AA · BB · CC <small>2–4 blanks · 5 choices</small></span></div>
+   <button id="export-all" class="text-button">↓ Excel assessment · all objects</button>
+   <small class="local-note">Progress stays in this browser. No name or ID needed.</small>
+  </section>
+  <section class="object-picker" aria-labelledby="choose-title">
+   <div class="picker-heading"><div><div class="eyebrow">YOUR READING SPOT</div><h2 id="choose-title">Choose your school supply</h2></div><span class="pill">20 choices</span></div>
+   <p>Use the same picture each time. Your teacher can match it to your Excel assessment.</p>
+   <div id="object-grid" class="object-grid"></div>
+   <div class="picker-foot"><span>◉ Tap your picture to begin</span><span>Initial blends + whole words</span></div>
+  </section>
+ </main>
+ <main id="activity" class="activity" hidden>
+  <div class="activity-top">
+   <header class="app-header">
+    <button id="home" class="app-brand" title="Choose a school supply"><img src="assets/magic-cat.png" alt=""><span>Blend Master</span></button>
+    <div class="header-actions">
+     <button id="object-badge" class="object-badge" title="Change school supply"></button>
+     <details id="teacher-tools" class="teacher-tools"><summary>Teacher tools</summary><div class="teacher-panel" data-scrollable="true">
+      <button id="export-current" class="outline">↓ Excel assessment</button>
+      <div class="teacher-rating" aria-label="Teacher support rating"><span>Teacher:</span><button data-rating="Independent">✓ Independent</button><button data-rating="With help">◐ With help</button><button data-rating="Practising">↻ Practising</button></div>
+      <p id="progress" class="teacher-progress"></p><p class="teacher-legend">A, B, C: one blank and three choices. AA: two blanks. BB: three blanks. CC: four blanks. Each has five choices combining blends and whole words.</p>
+      <button id="reset-all" class="text-button">Reset this object’s progress</button>
+     </div></details>
+    </div>
+   </header>
+   <div class="activity-toolbar"><span class="pill">BLENDS &amp; WORDS</span><div class="levels" aria-label="Choose a level"><div><div id="levels-one"></div></div><div><div id="levels-two"></div></div></div></div>
+  </div>
+  <section class="work-card">
+   <aside class="picture-side">
+    <div class="topic-line"><span id="theme">Picture sentence</span><span id="item-count"></span></div>
+    <div id="picture-frame" class="picture-frame"><img id="activity-picture" class="activity-picture" alt=""><div id="picture-covers" aria-hidden="true"></div></div>
+    <span class="picture-caption">Look at the picture. Listen to the sentence.</span>
+    <div class="listening-tools"><button id="listen" class="listen">◖)) Listen</button><button id="stop" class="stop" aria-label="Stop speaking">■ Stop</button><label class="voice-speed">Voice speed <select id="speed"><option value="0.65">Slower</option><option value="0.82" selected>Steady</option><option value="1">Faster</option></select></label></div>
+    <p id="voice-note" class="voice-note" role="status"></p>
+   </aside>
+   <div class="workspace">
+    <div class="task-heading"><div><span id="task-eyebrow" class="eyebrow"></span><h2>Complete the sentence</h2></div><span id="piece-count" class="pill"></span></div>
+    <section id="notebook" class="notebook blend-notebook" aria-label="Your notebook">
+     <div class="notebook-heading"><div><span class="notebook-caption">MY NOTEBOOK · TODAY’S DATE</span><span class="notebook-date-actions"><time id="notebook-date" class="notebook-date"></time><button id="next-date" class="outline notebook-next" aria-label="Next question">Next →</button></span></div><img class="notebook-pencil" src="assets/supplies/pencil.svg" alt="" aria-hidden="true"></div>
+     <div class="notebook-writing">
+      <div class="pad-label"><span>COMPLETE EACH BLANK</span><span id="placed-count" aria-live="polite"></span></div>
+      <p id="context" class="context cloze-context" data-area="sentence" aria-label="Sentence with answer blanks"></p>
+      <div class="cloze-bank">
+       <div class="tray-heading"><span id="choice-label"></span><button id="clear-blank" class="text-button">↩ Clear this blank</button></div>
+       <div class="cloze-choice-row"><div id="choices" class="tile-area tray" data-area="choices" aria-label="Answer choices"></div><button id="next-choices" class="primary choices-next" aria-label="Next question">Next →</button></div>
+      </div>
+     </div>
+    </section>
+    <p class="instructions">Drag a choice to a blank, or tap a blank then a choice. Blend choices fill the start of a word. Whole-word choices fill a complete blank.</p>
+    <div class="answer-controls"><button id="check" class="primary">Check my answer ✓</button><button id="reset-question" class="outline">↻ Reset question</button><button id="hint" class="outline">Show me a hint</button></div>
+    <p id="feedback" class="feedback" role="status" aria-live="polite"></p><div id="hint-display" class="hint-display" hidden></div>
+   </div>
+  </section>
+  <footer class="activity-footer"><div class="navigation"><button id="previous" class="outline">← Back</button><button id="next" class="primary">Next →</button><button id="shuffle-activities" class="text-button">Shuffle activities</button></div></footer>
+  <section id="farm-ride" class="farm-ride" aria-label="Farm wagon progress">
+   <div class="farm-travel" aria-hidden="true"><div id="farm-rig" class="farm-rig">
+    <svg class="farm-body" viewBox="0 0 2172 724" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+     <defs><mask id="farm-wheel-cutouts" maskUnits="userSpaceOnUse"><rect width="2172" height="724" fill="white"/><circle cx="236" cy="594" r="105" fill="black"/><circle cx="944" cy="594" r="105" fill="black"/><circle cx="1478" cy="508" r="193" fill="black"/><circle cx="2010" cy="586" r="111" fill="black"/></mask></defs>
+     <image href="assets/farm-wagon.png" width="2172" height="724" mask="url(#farm-wheel-cutouts)"/>
+    </svg>
+    <span class="farm-wheel wheel-one"></span><span class="farm-wheel wheel-two"></span><span class="farm-wheel wheel-three"></span><span class="farm-wheel wheel-four"></span>
+    <span id="wagon-count" class="wagon-count">0</span>
+   </div></div>
+   <p id="ride-status" class="ride-status" role="status" aria-live="polite"></p>
+  </section>
+ </main>
+ <div id="drag-ghost" class="drag-ghost" hidden></div>
+</body>
+</html>

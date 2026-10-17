@@ -1,0 +1,24 @@
+Magic Cat — Complete Netlify upload folder
+
+Upload this entire Magic-Cat-Netlify folder to the existing magiccat3 project's Deploys page. Do not upload only the landing page or only its assets folder. No ZIP is needed.
+
+The folder contains:
+  index.html              Shared landing page at the site root
+  assets/                 Landing picture and logo
+  Magic-Cat-B/index.html   Food and affirmations activity
+  Magic-Cat-B/assets/      All B pictures
+  Magic-Cat-C/index.html   Halloween activity
+  Magic-Cat-C/assets/      All C pictures
+
+After deployment:
+  https://magiccat3.netlify.app/                       Landing page
+  https://magiccat3.netlify.app/Magic-Cat-B/index.html  Magic Cat B
+  https://magiccat3.netlify.app/Magic-Cat-C/index.html  Magic Cat C
+
+Both activities have an All activities link back to the landing page. No Student ID or sign-in is requested. The landing page retains its screen-height layout.
+
+For a Git-connected Netlify project, place this folder's CONTENTS at the repository root and use . as the publish directory, with no build command.
+
+Netlify documentation:
+https://docs.netlify.com/deploy/create-deploys/
+https://docs.netlify.com/resources/troubleshooting/page-not-found-error-guide/

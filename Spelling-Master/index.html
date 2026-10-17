@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+ <meta name="theme-color" content="#315d68">
+ <title>Spelling Master</title>
+ <link rel="stylesheet" href="styles.css">
+ <script defer src="objects.js"></script><script defer src="data.js"></script>
+ <script defer src="core.js"></script><script defer src="excel.js"></script><script defer src="app.js"></script>
+</head>
+<body>
+ <div id="storage-notice" class="notice" role="status" hidden></div>
+ <main id="landing" class="landing">
+  <section class="welcome">
+   <div class="brand"><img src="assets/magic-cat.png" alt=""><span>MYSTIC &amp; MAGIC CAT</span></div>
+   <div class="eyebrow">A little spelling magic, every day.</div>
+   <h1>Spelling<br><span>Master</span><span class="sparkle" aria-hidden="true">✦</span></h1>
+   <p class="intro">Listen. Move the pieces.<br>Make words and sentences.</p>
+   <div class="feature-list"><span><b>01</b> It reads to me.</span><span><b>02</b> Letter teams stay together.</span><span><b>03</b> Six levels to grow with me.</span></div>
+   <div class="level-preview"><span>A · B · C <small>3 pieces + 1 extra letter</small></span><span>AA · BB · CCC <small>4 pieces + 3 extra letters</small></span></div>
+   <button id="export-all" class="text-button">↓ Excel assessment · all objects</button>
+   <small class="local-note">Progress stays in this browser. No name or ID needed.</small>
+  </section>
+  <section class="object-picker" aria-labelledby="choose-title">
+   <div class="picker-heading"><div><div class="eyebrow">YOUR READING SPOT</div><h2 id="choose-title">Choose your school supply</h2></div><span class="pill">20 choices</span></div>
+   <p>Use the same picture each time. Your teacher can match it to your Excel assessment.</p>
+   <div id="object-grid" class="object-grid"></div>
+   <div class="picker-foot"><span>◉ Tap your picture to begin</span><span>Spelling + sentence building</span></div>
+  </section>
+ </main>
+ <main id="activity" class="activity" hidden>
+  <div class="activity-top">
+  <header class="app-header">
+   <button id="home" class="app-brand" title="Choose a school supply"><img src="assets/magic-cat.png" alt=""><span>Spelling Master</span></button>
+   <div class="header-actions"><button id="object-badge" class="object-badge" title="Change school supply"></button><details id="teacher-tools" class="teacher-tools"><summary>Teacher tools</summary><div class="teacher-panel" data-scrollable="true"><button id="export-current" class="outline">↓ Excel assessment</button><div class="teacher-rating" aria-label="Teacher support rating"><span>Teacher:</span><button data-rating="Independent">✓ Independent</button><button data-rating="With help">◐ With help</button><button data-rating="Practising">↻ Practising</button></div><p id="progress" class="teacher-progress"></p><p class="teacher-legend">Sound chunks: <b class="legend-blend">blends</b> · <b class="legend-team">letter teams</b> · <b class="legend-vowel">vowel neighbours</b> · <b class="legend-ending">endings</b></p><button id="reset" class="text-button">Reset this object’s progress</button></div></details></div>
+  </header>
+  <div class="activity-toolbar">
+   <div class="mode-tabs" role="tablist" aria-label="Activity type"><button id="mode-spelling" role="tab" data-mode="spelling">Build a word</button><button id="mode-sentences" role="tab" data-mode="sentences">Build a sentence</button></div>
+   <div class="levels" aria-label="Choose a level"><div><div id="levels-one"></div></div><div><div id="levels-two"></div></div></div>
+  </div>
+  </div>
+  <section class="work-card">
+   <aside class="picture-side"><div class="topic-line"><span id="theme"></span><span id="item-count"></span></div><img id="activity-picture" class="activity-picture" alt=""><span id="picture-caption" class="picture-caption"></span><div class="listening-tools"><button id="listen" class="listen">◖)) Listen</button><button id="stop" class="stop" aria-label="Stop speaking">■</button><label class="voice-speed">Voice speed <select id="speed"><option value="0.65">Slower</option><option value="0.82" selected>Steady</option><option value="1">Faster</option></select></label></div><p id="voice-note" class="voice-note" role="status"></p></aside>
+   <div class="workspace">
+    <div class="task-heading"><div><span id="task-eyebrow" class="eyebrow"></span><h2 id="task-title"></h2></div><span id="piece-count" class="pill"></span></div>
+    <section id="notebook" class="notebook" aria-label="Your notebook">
+     <div class="notebook-heading"><div><span class="notebook-caption">MY NOTEBOOK · TODAY’S DATE</span><time id="notebook-date" class="notebook-date"></time></div><img class="notebook-pencil" src="assets/supplies/pencil.svg" alt="" aria-hidden="true"></div>
+     <div class="notebook-writing">
+      <p id="context" class="context"></p>
+      <div class="piece-board">
+       <div class="answer-column"><div class="pad-label"><span>WRITE HERE WITH THE PIECES</span><span id="placed-count"></span></div><div id="pad" class="tile-area pad" data-area="pad" aria-label="Notebook answer landing pad"></div></div>
+       <div class="bank-column"><div class="tray-heading"><span id="tray-label">MIXED-UP PIECES</span><button id="return-selected" class="text-button" disabled>↩ Return selected piece</button></div><div id="tray" class="tile-area tray" data-area="tray" aria-label="Mixed-up pieces"></div></div>
+      </div>
+     </div>
+    </section>
+    <p id="piece-instructions" class="instructions">Drag a piece into place, or tap a piece then a <b>+</b>. You can insert it before, between, or after pieces. Drag back to the tray to remove it.</p>
+    <div class="answer-controls"><button id="check" class="primary">Check my answer ✓</button><button id="mix" class="outline" title="Return all pieces to the bank and start this question again">↻ Reset question</button><button id="hint" class="outline">Show me a hint</button></div>
+    <p id="feedback" class="feedback" role="status" aria-live="polite"></p>
+    <div id="hint-display" class="hint-display" hidden></div>
+   </div>
+  </section>
+  <footer class="activity-footer"><div class="navigation"><button id="previous" class="outline">← Back</button><button id="next" class="primary">Next →</button><button id="shuffle-activities" class="text-button">Shuffle activities</button></div></footer>
+ </main>
+ <div id="drag-ghost" class="drag-ghost" hidden></div>
+</body>
+</html>
